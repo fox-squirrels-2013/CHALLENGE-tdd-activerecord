@@ -8,16 +8,21 @@
 1. Scopes to retrieve specific collections from the database
 
 ## Instructions
+Clone this repo to your local machine and create a branch to work on.  
 
-You will make the following spec files pass, in order:
+Run `rake db:migrate` to run your migration file. 
+
+There are tests written for you in the files:
 
 1. `spec/level_1_spec.rb`
 1. `spec/level_2_spec.rb`
 1. `spec/level_3_spec.rb`
 
-Chagne 1 `xit` to `it` at a time and commit each time you make the test pass.
+Run `rake` to run the default rake task in your Rakefile which will run all tests.  
 
-Submit a pull request to this repository before leaving for lunch so your peers
+Change 1 `xit` to `it` at a time (starting with level 1) to move each test from pending to failing and then write the code to make it pass.  Be sure to commit your changes after each passing test.
+
+Submit a pull request from your local branch to this repository before leaving for lunch so your peers
 can review your code.
 
 **DO NOT MERGE SOLUTION PULL REQUESTS INTO THIS REPOSITORY**
