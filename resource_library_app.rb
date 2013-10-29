@@ -4,6 +4,13 @@ require 'sinatra/activerecord'
 set :database, 'sqlite3:///db/resource_library.sqlite3'
 
 class Topic < ActiveRecord::Base
+  validates :name, presence: true
+  validates :opinion, presence: true
+  validates :opinion, acceptance: { accept: "A well thought out opinion on a subtle and nuanced topic", 
+                                    not_accept: 'Too short' }
+
+  has_many :resources
+
 
   def tag_with!(tag)
     # IMPLEMENT ME
@@ -25,3 +32,9 @@ end
 class Tag < ActiveRecord::Base
 
 end
+
+  def validate(record)
+    unless record.name.starts_with? 'X'
+      record.errors[:name] << 'Need a name starting with X please!'
+    end
+  end
