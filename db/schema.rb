@@ -26,6 +26,8 @@ ActiveRecord::Schema.define(version: 20131008235912) do
   end
 
   create_table "topic_tags", force: true do |t|
+    t.integer  "tag_id"
+    t.integer  "topic_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
