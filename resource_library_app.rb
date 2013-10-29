@@ -29,6 +29,7 @@ end
 class TopicTag < ActiveRecord::Base
   belongs_to :tag
   belongs_to :topic
+  validates :topic_id, :uniqueness => {:scope => :tag_id}
 end
 
 class Tag < ActiveRecord::Base
