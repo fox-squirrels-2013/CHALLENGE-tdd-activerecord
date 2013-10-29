@@ -1,12 +1,11 @@
 class CreateInitialTables < ActiveRecord::Migration
   def up
     create_table :topics do |t|
-
       t.timestamps
     end
 
     create_table :resources do |t|
-
+      t.belongs_to :topic
       t.timestamps
     end
 
