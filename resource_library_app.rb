@@ -34,7 +34,7 @@ end
 class Tag < ActiveRecord::Base
   has_many :topics, :through => :topic_tags
   has_many :topic_tags
-  validates :name, :uniqueness => true
+  validates :name, :uniqueness => true, :presence => true
 end
 
 # validates syntax is object, type of validation
