@@ -12,7 +12,7 @@ class Topic < ActiveRecord::Base
   end
 
   def add_resource!(resource)
-    # IMPLEMENT ME
+    Resource.create(resource.merge({:topic_id => self.id}))   #using merge to add to existing resource hash the topic_id, which is set to self(topic).id
   end
 end
 
@@ -31,3 +31,5 @@ end
 class Tag < ActiveRecord::Base
 
 end
+
+# validates syntax is object, type of validation
