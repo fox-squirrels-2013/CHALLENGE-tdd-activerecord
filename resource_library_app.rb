@@ -1,9 +1,14 @@
 require 'sinatra'
 require 'sinatra/activerecord'
+require_relative 'app/models/resource.rb'
+require_relative 'app/models/topic.rb'
+
 
 set :database, 'sqlite3:///db/resource_library.sqlite3'
 
 class Topic < ActiveRecord::Base
+
+  has_many :resources
 
   def tag_with!(tag)
     # IMPLEMENT ME
