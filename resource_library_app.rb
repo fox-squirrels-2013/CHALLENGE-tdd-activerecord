@@ -10,7 +10,8 @@ class Topic < ActiveRecord::Base
   validates :name, :opinion, :presence => true
   validates :opinion, :exclusion => { :in => ["Too short"]}
   def tag_with!(tag)
-    # IMPLEMENT ME
+    tag.topic_id = self.id
+    tag.save
   end
 
   def add_resource!(resource)
