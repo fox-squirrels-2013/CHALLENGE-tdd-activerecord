@@ -22,6 +22,7 @@ class Resource < ActiveRecord::Base
   validates :url, :topic_id, presence: true
   validates_format_of :url, with: /http:\/{2}\w{2,}.{1}com/
   validates :topic_id, numericality: true
+  validates :difficulty, inclusion: { :in => [:easy, :medium, :hard] }
 end
 
 class TopicTag < ActiveRecord::Base

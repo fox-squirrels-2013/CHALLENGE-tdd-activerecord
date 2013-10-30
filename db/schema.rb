@@ -10,14 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131030035107) do
+ActiveRecord::Schema.define(version: 20131030041036) do
 
-  create_table "resources", force: true do |t|
-    t.integer  "topic_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "url"
-  end
+# Could not dump table "resources" because of following NoMethodError
+#   undefined method `[]' for nil:NilClass
 
   create_table "tags", force: true do |t|
     t.datetime "created_at"
