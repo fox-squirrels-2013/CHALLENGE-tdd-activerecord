@@ -16,17 +16,17 @@ describe Topic do
 end
 
 describe Resource do
-  xit { should belong_to(:topic) }
+  it { should belong_to(:topic) }
 
   describe "#url" do
-    xit { should allow_value("http://google.com/").for(:url) }
-    xit { should_not allow_value("an invalid url").for(:url) }
-    xit { should validate_presence_of(:url) }
+    it { should allow_value("http://google.com/").for(:url) }
+    it { should_not allow_value("an invalid url").for(:url) }
+    it { should validate_presence_of(:url) }
   end
 
   describe "#topic_id" do
-    xit { should validate_numericality_of(:topic_id) }
-    xit { should validate_presence_of(:topic_id) }
+    it { should validate_numericality_of(:topic_id) }
+    it { should validate_presence_of(:topic_id) }
   end
 
   describe "#difficulty" do

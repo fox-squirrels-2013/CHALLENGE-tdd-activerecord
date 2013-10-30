@@ -5,9 +5,9 @@ set :database, 'sqlite3:///db/resource_library.sqlite3'
 
 class Topic < ActiveRecord::Base
   validates :name, presence: true
-  validates :opinion, presence: true
-  validates :opinion, acceptance: { accept: "A well thought out opinion on a subtle and nuanced topic", 
-                                    not_accept: 'Too short' }
+  validates :opinion, presence: true, acceptance: 
+                                     { accept: "A well thought out opinion on a subtle and nuanced topic", 
+                                       not_accept: "Too short" }
 
   has_many :resources
 
@@ -22,7 +22,10 @@ class Topic < ActiveRecord::Base
 end
 
 class Resource < ActiveRecord::Base
+  validates :url, presence: true, format: { with: /[http]/ }
+  validates :topic_id, presence: true, numericality: true
 
+  belongs_to :topic
 end
 
 class TopicTag < ActiveRecord::Base
