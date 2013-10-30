@@ -21,6 +21,7 @@ class Resource < ActiveRecord::Base
   belongs_to :topic
   validates :url, presence: true
   validates_format_of :url, with: /http:\/{2}\w{2,}.{1}com/
+  validates :topic_id, numericality: true
 end
 
 class TopicTag < ActiveRecord::Base
