@@ -5,6 +5,8 @@ set :database, 'sqlite3:///db/resource_library.sqlite3'
 
 class Topic < ActiveRecord::Base
   has_many :resources
+  has_many :topic_tags
+  has_many :tags, through: :topic_tags
   validates :name, :opinion, presence: true
   validates :opinion, length: { minimum: 10 }
 
@@ -26,9 +28,11 @@ class Resource < ActiveRecord::Base
 end
 
 class TopicTag < ActiveRecord::Base
-
+  belongs_to :tag
+  belongs_to :topic
 end
 
 class Tag < ActiveRecord::Base
-
+  has_many :topics, through: :topic_tags
+  has_many :topic_tags
 end

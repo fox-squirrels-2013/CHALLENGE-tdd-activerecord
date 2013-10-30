@@ -12,7 +12,9 @@ class CreateInitialTables < ActiveRecord::Migration
     end
 
     create_table :topic_tags do |t|
-
+      t.belongs_to :topic
+      t.belongs_to :tag
+      
       t.timestamps
     end
     create_table :tags do |t|
