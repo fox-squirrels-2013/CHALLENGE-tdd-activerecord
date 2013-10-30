@@ -17,13 +17,14 @@ class Topic < ActiveRecord::Base
   end
 
   def add_resource!(resource)
-    # IMPLEMENT ME
+    Resource.create(resource.merge(:topic_id => self.id))
   end
 end
 
 class Resource < ActiveRecord::Base
   validates :url, presence: true, format: { with: /[http]/ }
   validates :topic_id, presence: true, numericality: true
+  validates :difficulty, inclusion: { in: [:easy, :medium, :hard] }
 
   belongs_to :topic
 end
