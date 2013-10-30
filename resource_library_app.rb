@@ -13,7 +13,7 @@ class Topic < ActiveRecord::Base
   end
 
   def add_resource!(resource)
-    # IMPLEMENT ME
+    Resource.create(:topic_id => Topic.last[:id], :url => resource[:url], :difficulty => resource[:difficulty])
   end
 end
 
