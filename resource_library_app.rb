@@ -8,9 +8,13 @@ class Topic < ActiveRecord::Base
 	validates :opinion, presence: true
 	validates :opinion, length: { minimum: 10 }
 	has_many :resources
+	has_many :topic_tags
+	has_many :tags, through: :topic_tags
 
   def tag_with!(tag)
-    # IMPLEMENT ME
+  	tag_hash = {}
+  	tag_hash[:tag_id] = tag.id
+  	TopicTag.create(tag_hash.merge(:topic_id => self.id))
   end
 
   def add_resource!(resource)
@@ -29,10 +33,14 @@ class Resource < ActiveRecord::Base
 end
 
 class TopicTag < ActiveRecord::Base
+	validates_uniqueness_of :topic_id, scope: :tag_id
 
 end
 
 class Tag < ActiveRecord::Base
-	
+	has_many :topic_tags
+	has_many :topics, through: :topic_tags
+	validates :name, uniqueness: true
+	validates :name, presence: true
 
 end
